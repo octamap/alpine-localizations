@@ -1,0 +1,36 @@
+{
+  "name": "@iliasnolsson/alpine-localizations",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build",
+    "generate": "node generate.cjs",
+    "publish-npmjs": "npm publish --access restricted"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.2.1",
+    "path": "^0.12.7",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.4.8",
+    "vite-plugin-dts": "^3.9.0",
+    "tsconfig": "*"
+  }
+}
