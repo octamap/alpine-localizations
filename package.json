@@ -15,6 +15,10 @@
   "type": "module",
   "main": "dist/index.js",
   "jsdelivr": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octamap/alpine-localizations"
+  },
   "exports": {
     ".": {
       "default": "./index.ts",
