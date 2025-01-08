@@ -2,7 +2,7 @@
 
 **A simple localization utility for Alpine.js applications.**  
 
-This package helps you add localization support to your Alpine.js project by dynamically loading language files and providing a convenient `$t` magic property for translations.
+This package helps you add localization support to your Alpine.js project by dynamically loading language files and providing a convenient `$t` magic property for translations. Just **0.9 KB** in total size
 
 
 ## 🛠️ **Usage**
