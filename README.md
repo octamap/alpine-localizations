@@ -5,15 +5,20 @@
 This package helps you add localization support to your Alpine.js project by dynamically loading language files and providing a convenient `$t` magic property for translations. Just **0.9 KB** in total size
 
 
+## Breaking changes in V2
+Localizations files should now be named like this `en.json` instead of `en-US.json`
+
+This makes it a bit simpler to declare localizations for all variations of a language such as en-AU or en-GB 
+
 ## 🛠️ **Usage**
 
 ### **1. Load Localization Files**  
 
 `alpine-localizations` will automatically fetch the appropriate localization file based on the user's browser language (`navigator.language`).
 
-For example, if `navigator.language` is `en-US`, it will attempt to fetch:
+For example, if `navigator.language` is `en`, it will attempt to fetch:
 ```
-/localizations/en-US.json
+/localizations/en.json
 ```
 
 ### **2. Access Translations with `$t`**
@@ -54,7 +59,7 @@ Add the script link for `alpine-localizations` **before** Alpine.js:
 
 ```html
 <!-- Add alpine-localizations -->
-<script src="https://cdn.jsdelivr.net/npm/@octamap/alpine-localizations@1.x.x" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@octamap/alpine-localizations@2.x.x" defer></script>
 
 <!-- Add Alpine.js -->
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -77,7 +82,7 @@ Example folder structure:
     fr-FR.json
 ```
 
-### **Example Localization File (`en-US.json`)**
+### **Example Localization File (`en.json`)**
 ```json
 {
   "greeting": "Hello, World!",
@@ -105,7 +110,7 @@ Dynamic variables allow you to create flexible and reusable localization strings
 
 In your localization JSON file, use placeholders (`\r`) for dynamic content:
 
-**`en-US.json`**
+**`en.json`**
 ```json
 {
   "checkInboxDescription": "Welcome \r. We have sent a link to your email (\r). Click the link to complete the sign in"
@@ -150,7 +155,7 @@ You can use the `set()` method on your `$t` magic property to pass values to rep
 
 ### **4. Advanced Example with Multiple Variables**
 
-**Localization File (`en-US.json`):**
+**Localization File (`en.json`):**
 ```json
 {
   "orderSummary": "Hello \r, your order (#\r) for \r items has been confirmed."
@@ -183,7 +188,7 @@ Dynamic variables make your localizations cleaner, more reusable, and adaptable 
 ## 🌍 **Localization File Fetching**
 
 - **Default Path:** `/localizations/`
-- **File Naming:** Must match the `navigator.language` value (`en-US.json`, `fr-FR.json`, etc.).
+- **File Naming:** Must match the `navigator.language` value (`en.json`, `fr.json`, etc.).
 - **Response Format:** Must be valid JSON.
 
 ---

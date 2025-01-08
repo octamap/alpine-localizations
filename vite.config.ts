@@ -2,6 +2,7 @@
 import * as path from 'path'
 import { defineConfig } from "vite";
 import pkg from "./package.json";
+import dts from "vite-plugin-dts"
 
 type ModulesMap = Record<string, {
     types?: string;
@@ -26,6 +27,7 @@ const input: Record<string, string> = {}
 
 if (exports) {
     for (const [key, paths] of Object.entries(exports)) {
+        if (key.includes("types")) continue;
         if (!paths.default) continue;
         const name = getName(key)
         entry[name] = paths.default
@@ -48,18 +50,22 @@ if ("peerDependencies" in pkgAny) {
 export default defineConfig({
     base: "./",
     plugins: [
+        dts({
+            entryRoot: "src",
+            outDir: "dist",
+            include: ["src"],
+            exclude: ["node_modules", "dist"],
+            copyDtsFiles: true,
+        })
     ],
     build: {
         outDir: "dist",
-        minify: "esbuild",
-        terserOptions: {
-            format: {
-                comments: false
-            }
-        },
+
         lib: {
             entry,
-            formats: ['es'],
+            "name": "OctamapAlpineLocalizations",
+            formats: ["iife"],
+            fileName: () => "index.js"
         },
         rollupOptions: {
             input,
