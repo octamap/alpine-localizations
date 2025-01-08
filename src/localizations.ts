@@ -1,7 +1,7 @@
 
 const language = navigator?.language?.split("-")?.[0]
 if (language != null) {
-    const responsePromise = fetch("/localizations/" + navigator.language + ".json");
+    const responsePromise = fetch("/localizations/" + language + ".json");
     document.addEventListener('alpine:init', async () => {
         window.Alpine.store('localizations', {});
 
