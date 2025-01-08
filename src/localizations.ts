@@ -1,6 +1,6 @@
 const responsePromise = fetch("/localizations/" + navigator.language + ".json");
 
-async function initialize() {
+document.addEventListener('alpine:init', async () => {
     window.Alpine.store('localizations', {});
 
     window.Alpine.magic('t', (el) => {
@@ -34,26 +34,18 @@ async function initialize() {
 
     // Update Alpine Store
     window.Alpine.store('localizations', localizations);
-}
-
-if ("Alpine" in window) {
-    initialize()
-} else {
-    document.addEventListener('alpine:init', () => {
-        initialize()
-    });
-}
-
-function replace(text: string, texts: string[]): string {
-    let index = 0; 
-    return text.replace(/\r/g, () => {
-        return index < texts.length ? texts[index++] : '';
-    });
-}
+});
 
 (String.prototype as any).set = function (...args: any[]) {
+    function replace(text: string, texts: string[]): string {
+        let index = 0;
+        return text.replace(/\r/g, () => {
+            return index < texts.length ? texts[index++] : '';
+        });
+    }
+
     const originalString = String(this);
     return replace(originalString, args);
 };
 
-export {}
+export { }
