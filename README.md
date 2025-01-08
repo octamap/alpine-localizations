@@ -97,6 +97,80 @@ Example folder structure:
 - Localization Key: `"welcome": "Welcome, {{name}}!"`  
 - Output: **"Welcome, John!"**
 
+## 📝 **Dynamic Variables in Localizations (using `\r`) **
+
+Dynamic variables allow you to create flexible and reusable localization strings by embedding placeholders that can be replaced with dynamic values at runtime.
+
+### **1. Define Dynamic Variables in Localization Files**
+
+In your localization JSON file, use placeholders (`\r`) for dynamic content:
+
+**`en-US.json`**
+```json
+{
+  "checkInboxDescription": "Welcome \r. We have sent a link to your email (\r). Click the link to complete the sign in"
+}
+```
+
+- Each `\r` acts as a placeholder for dynamic values that will be passed when calling the translation.
+
+---
+
+### **2. Usage in HTML with Alpine.js**
+
+You can use the `set()` method on your `$t` magic property to pass values to replace the placeholders.
+
+**Example:**
+
+```html
+<div x-data="{ email: 'adam@mail.com' }">
+    <span x-text="$t.checkInboxDescription.set('Adam', email)"></span>
+</div>
+```
+
+### **How it works:**
+1. `checkInboxDescription` is fetched from the localization file.
+2. The `set()` method replaces each `\r` in the order the arguments are passed:
+   - The first `\r` becomes `"Adam"`.
+   - The second `\r` becomes `"adam@mail.com"`.
+
+### **Rendered Output:**
+```html
+<span>Welcome Adam. We have sent a link to your email (adam@mail.com). Click the link to complete the sign in</span>
+```
+
+---
+
+### **3. Best Practices for Dynamic Variables**
+- Ensure the number of placeholders (`\r`) in the localization string matches the number of arguments passed to `set()`.
+- Use meaningful variable names in your HTML code to improve readability.
+- Avoid hardcoding dynamic content directly in localization strings.
+
+---
+
+### **4. Advanced Example with Multiple Variables**
+
+**Localization File (`en-US.json`):**
+```json
+{
+  "orderSummary": "Hello \r, your order (#\r) for \r items has been confirmed."
+}
+```
+
+**HTML Usage:**
+```html
+<div x-data="{ username: 'John', orderId: '12345', itemCount: 3 }">
+    <p x-text="$t.orderSummary.set(username, orderId, itemCount)"></p>
+</div>
+```
+
+**Rendered Output:**
+```html
+<p>Hello John, your order (#12345) for 3 items has been confirmed.</p>
+```
+
+Dynamic variables make your localizations cleaner, more reusable, and adaptable to various contexts.
+
 ## 📦 **API Reference**
 
 ### `$t` Magic Property
