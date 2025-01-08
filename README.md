@@ -97,7 +97,7 @@ Example folder structure:
 - Localization Key: `"welcome": "Welcome, {{name}}!"`  
 - Output: **"Welcome, John!"**
 
-## 📝 **Dynamic Variables in Localizations (using `\r`) **
+## 📝 Dynamic Variables in Localizations (using `\r`)
 
 Dynamic variables allow you to create flexible and reusable localization strings by embedding placeholders that can be replaced with dynamic values at runtime.
 

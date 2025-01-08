@@ -1,6 +1,6 @@
 {
   "name": "@octamap/alpine-localizations",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Quick localizations for alpine.js",
   "private": false,
   "scripts": {
