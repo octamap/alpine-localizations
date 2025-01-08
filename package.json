@@ -21,10 +21,10 @@
   },
   "exports": {
     ".": {
+      "default": "./index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-            "default": "./index.ts"
+      "require": "./dist/index.cjs"
     }
   },
   "files": [
