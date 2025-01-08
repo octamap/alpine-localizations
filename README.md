@@ -54,7 +54,7 @@ Add the script link for `alpine-localizations` **before** Alpine.js:
 
 ```html
 <!-- Add alpine-localizations -->
-<script src="https://cdn.jsdelivr.net/npm/@octamap/alpine-localizations" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@octamap/alpine-localizations@1.x.x" defer></script>
 
 <!-- Add Alpine.js -->
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
