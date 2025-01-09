@@ -78,8 +78,8 @@ Example folder structure:
 ```
 /public
   /localizations
-    en-US.json
-    fr-FR.json
+    en.json
+    fr.json
 ```
 
 ### **Example Localization File (`en.json`)**
