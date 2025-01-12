@@ -49,6 +49,16 @@ By default, the package will attempt to extract content directly from the `x-tex
 
 This approach minimizes flickering and ensures that users always see meaningful content, even before localization files are fully loaded.
 
+### 4. Remember to add x-data
+Remember to add the x-data on any parent where you want to use $t, alpine.js only initializes the component with reactivity when x-data has been added.
+
+Example:
+
+```html
+<body x-data="{}">
+    <h2 class="main-title" x-text="$t.titleTop">Install, build</h2>
+```
+
 ---
 
 ## 🚀 **Setup**

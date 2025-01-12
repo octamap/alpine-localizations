@@ -10,8 +10,8 @@
     "generate": "node generate.cjs",
     "publish-npmjs": "npm publish --access public"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "octamap",
+  "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
   "jsdelivr": "dist/index.js",
@@ -19,13 +19,18 @@
     "type": "git",
     "url": "https://github.com/octamap/alpine-localizations"
   },
-  "keywords": ["alpine.js", "localizations", "i18n", "alpine"],
+  "keywords": [
+    "alpine.js",
+    "localizations",
+    "i18n",
+    "alpine"
+  ],
   "exports": {
     ".": {
+      "default": "./index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js",
-      "default": "./index.ts"
+      "require": "./dist/index.js"
     }
   },
   "files": [
