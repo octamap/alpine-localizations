@@ -11,19 +11,17 @@ if (language != null) {
                     if (prop in target) {
                         return target[prop as keyof typeof target];
                     }
-                    // We should try to use the text already declared on the element 
-                    // Example
-                    // if $t is declared in :placeholder, we should then take the text from placeholder 
-                    if (el.hasAttribute('x-text') && el.getAttribute('x-text')?.includes(`$t.${String(prop)}`)) {
-                        return (el as any).textContent || String(prop);
+                    const remappers: Record<string, (el: any) => string | undefined | null> = {
+                        "x-text": el => el?.textContent,
+                        "x-bind:placeholder": el => el?.placeholder,
+                        ":placeholder": el => el?.placeholder,
+                        "x-html": el => el.innerHTML
                     }
-
-                    if (el.hasAttribute('x-bind:placeholder') && el.getAttribute('x-bind:placeholder')?.includes(`$t.${String(prop)}`)) {
-                        return (el as any).placeholder || String(prop);
-                    }
-
-                    if (el.hasAttribute(':placeholder') && el.getAttribute(':placeholder')?.includes(`$t.${String(prop)}`)) {
-                        return (el as any).placeholder || String(prop);
+                    const invocation = `$t.${String(prop)}`
+                    for (const [key, takeValue] of Object.entries(remappers)) {
+                        if (el.getAttribute(key)?.includes(invocation)) {
+                            return takeValue(el) || String(prop)
+                        }
                     }
                     return String(prop);
                 }

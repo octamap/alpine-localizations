@@ -1,6 +1,6 @@
 {
   "name": "@octamap/alpine-localizations",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Quick localizations for alpine.js",
   "private": false,
   "scripts": {
@@ -27,10 +27,10 @@
   ],
   "exports": {
     ".": {
-      "default": "./index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./dist/index.js",
+      "default": "./index.ts"
     }
   },
   "files": [
