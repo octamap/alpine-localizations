@@ -17,9 +17,9 @@ if (language != null) {
                         ":placeholder": el => el?.placeholder,
                         "x-html": el => el.innerHTML
                     }
-                    const invocation = `$t.${String(prop)}`
                     for (const [key, takeValue] of Object.entries(remappers)) {
-                        if (el.getAttribute(key)?.includes(invocation)) {
+                        const attribute = el.getAttribute(key)
+                        if (attribute?.includes("$t") && attribute.includes(String(prop))) {
                             return takeValue(el) || String(prop)
                         }
                     }
